@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101a16">
+  <meta name="description" content="Earn points from offers, referrals, and daily rewards.">
+  <title>EarnBox — Rewards</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/">Earn<span>Box</span></a><span id="header-user" class="muted"></span><button id="logout" class="button secondary small-button" hidden>Log out</button></header>
+  <main class="wrap">
+    <section id="auth-view" class="auth-grid">
+      <div class="hero"><p class="eyebrow">SMALL TASKS. REAL REWARDS.</p><h1>Make your time<br><span>count.</span></h1><p>Complete offers, collect points, invite friends, and request a payout when you’re ready.</p><div class="trust-note">100 points = R1 · Minimum payout R10</div></div>
+      <div class="card auth-card"><div class="tabs"><button id="show-login" class="tab active">Log in</button><button id="show-signup" class="tab">Create account</button></div>
+        <form id="login-form"><label>Username<input name="username" autocomplete="username" minlength="3" required></label><label>Password<input name="password" type="password" autocomplete="current-password" required></label><button class="button" type="submit">Log in</button></form>
+        <form id="signup-form" hidden><label>Username<input name="username" autocomplete="username" minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+" required></label><label>Password <span class="hint">10+ characters</span><input name="password" type="password" autocomplete="new-password" minlength="10" maxlength="100" required></label><label>Referral code <span class="hint">optional</span><input name="ref" id="ref-code" maxlength="20"></label><button class="button" type="submit">Create account</button></form><p id="auth-error" class="error" role="alert"></p><p class="fine">By creating an account, you agree to use the service fairly. Points have no cash value until an approved payout is processed.</p>
+      </div>
+    </section>
+    <section id="app-view" hidden>
+      <div class="welcome"><div><p class="eyebrow">YOUR REWARDS</p><h1>Welcome, <span id="username"></span></h1></div><button id="daily" class="button">Claim daily +10</button></div>
+      <div class="stat-grid"><article class="card stat"><span>Available balance</span><strong><i>R</i><b id="balance">0.00</b></strong><small id="points-balance">0 points</small></article><article class="card stat"><span>Lifetime earned</span><strong><i>R</i><b id="lifetime">0.00</b></strong><small id="lifetime-points">0 points total</small></article><article class="card stat"><span>Friends invited</span><strong><b id="referrals">0</b></strong><small>Earn 50 points per eligible signup</small></article></div>
+      <div class="content-grid"><section class="card section"><div class="section-title"><div><p class="eyebrow">GET STARTED</p><h2>Earn points</h2></div></div><div id="tasks" class="task-list"></div><p class="muted fine">Offer rewards are credited after the offer provider confirms completion. Don’t use fake accounts or attempt duplicate offers.</p></section>
+        <section class="card section"><p class="eyebrow">INVITE FRIENDS</p><h2>Your referral code</h2><p class="muted">Share this code. Your friend must enter it during signup.</p><div class="ref-row"><code id="refcode">—</code><button id="copy-ref" class="button secondary">Copy</button></div><p class="fine">Referral rewards are subject to fraud checks.</p></section>
+        <section class="card section"><p class="eyebrow">CASH OUT</p><h2>Request a payout</h2><p class="muted">Minimum R10 (1,000 points). Requests are reviewed by the EarnBox team.</p><form id="withdraw-form"><label>Points to withdraw<input name="points" type="number" min="1000" step="1" required></label><label>Payout method<select name="method" id="payout-method" required></select></label><label>Payout details<input name="account" maxlength="200" placeholder="Email, account or phone number" required></label><button class="button" type="submit">Request payout</button></form><p class="fine">Payout details are encrypted at rest. Only authorized administrators can view them.</p></section>
+        <section class="card section"><p class="eyebrow">YOUR ACCOUNT</p><h2>Recent activity</h2><div id="history" class="history"></div></section>
+      </div><p id="app-message" class="message" role="status"></p>
+    </section>
+  </main>
+  <footer>EarnBox · Rewards are subject to availability, verification, and payout review. <a href="/admin">Admin</a></footer>
+</body>
+</html>
